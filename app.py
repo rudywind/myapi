@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import cloudscraper
+import os
 
 app = Flask(__name__)
 scraper = cloudscraper.create_scraper()
@@ -57,4 +58,5 @@ def fetch_api(path):
         return jsonify({"error": str(e), "path": path}), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
