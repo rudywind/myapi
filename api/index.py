@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, request
 import cloudscraper
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 scraper = cloudscraper.create_scraper()
 API_KEY = "6e820ce645f4988dc5ec802984bba446dc1668c7"
 API_BASE = "https://api.mydramalist.com/v1"
